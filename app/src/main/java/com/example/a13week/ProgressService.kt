@@ -2,10 +2,10 @@ package com.example.a13week
 
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.provider.Settings.Global
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import kotlinx.coroutines.GlobalScope
@@ -14,10 +14,10 @@ import kotlinx.coroutines.launch
 
 const val PROGRESS_MAX = 100
 const val SERVICE_ID = 1
-
+@Suppress("DEPRECATION")
 class ProgressService: Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val contentIntent = Intent(this,MainActivity::class.java)
+        val contentIntent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this,
             0,
             contentIntent,
@@ -36,22 +36,21 @@ class ProgressService: Service() {
         GlobalScope.launch {
             val notiManager = getSystemService(NotificationManager::class.java)
 
-            for( progress in 1 .. PROGRESS_MAX){
+            for( progress in 1 .. PROGRESS_MAX) {
                 delay(200)
 
                 notificationBuilder.setProgress(PROGRESS_MAX, progress, false)
                 notiManager.notify(SERVICE_ID, notificationBuilder.build())
                 Log.d("Service", "Progress = $progress")
             }
-
-            stopForeground(true)
-            stopSelf()
         }
 
+        stopForeground(true)
+        stopSelf()
         return START_NOT_STICKY
     }
 
-    override fun onBind(p0: Intent?): IBinder? {
+    override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 

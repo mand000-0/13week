@@ -10,22 +10,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
         <Button
             android:id="@+id/btn_2nd_activity"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create 2nd Activity" />
+            android:text="Go to Second Activity" />
 
         <Button
             android:id="@+id/btn_service"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SERVICE 생성" />
+            android:text="Service 생성" />
+
+        <Button
+            android:id="@+id/btn_worker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Worker 시작" />
+
+        <Button
+            android:id="@+id/btn_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="알람 설정" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:name=".App"
@@ -15,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.13week"
         tools:targetApi="31">
-        <service android:name=".ProgressService"/>
+        <receiver
+            android:name=".AlarmReceiver"/>
+        <service
+            android:name=".ProgressService"/>
         <activity
             android:name=".SecondActivity"
             android:exported="false">
